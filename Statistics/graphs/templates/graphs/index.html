@@ -3,12 +3,13 @@
 {% block body %}
 
     <h1>Graph Builder</h1>
-    <button type="button" id="add_value" class="btn btn-light">+</button>
 
-    <br/><br />
+    <button type="button" id="add_value" class="btn btn-light">+</button>
+    <button type="button" id="build_graph" class="btn btn-light">Build</button>
+
+    <br/><br/>
 
     <div class="row" id="value_div">
-
     </div>
 
     <style>
@@ -24,24 +25,35 @@
 
     </style>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
 
-        let count = 1;
+        document.getElementById("build_graph").disabled = true;
+
+        let count = 0;
 
         $('#add_value').on('click', function () {
+            count++;
+
             let value_html = '<div class="col-md-2">' +
                 '<div class="input-group input-group-sm mb-6">' +
                 '<div class="input-group-prepend">' +
-                '<span class="input-group-text" style="margin-top: 5px;" id="inputGroup-sizing-sm">Value ' + count + '</span>' +
+                '<span class="input-group-text" style="margin-top: 5px;" id="inputGroup-sizing-sm">x' + count + '</span>' +
+                '</div>' +
+                '<input type="text" class="form-control" aria-describedby="inputGroup-sizing-sm" style="margin-top: 5px;">' +
+                '<div class="input-group-prepend">' +
+                '<span class="input-group-text" style="margin-top: 5px;" id="inputGroup-sizing-sm">y' + count + '</span>' +
                 '</div>' +
                 '<input type="text" class="form-control" aria-describedby="inputGroup-sizing-sm" style="margin-top: 5px;">' +
                 '</div>' +
                 '</div>';
 
             $('#value_div').append(value_html);
-            count++;
+
+            document.getElementById("build_graph").disabled = false;
+
+
         })
 
 
